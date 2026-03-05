@@ -194,7 +194,8 @@ const selectedGenresNames = computed(() => {
                     <div class="grid">
                         <RouterLink :to="`/games/${game.id}`" v-for="game in searchResults" :key="game.id"
                             class="card popular">
-                            <img :src="game.background_image || NoImage" alt="" class="game-img">
+                            <img :src="game.background_image || NoImage" @error="e => e.target.src = NoImage" alt=""
+                                class="game-img">
                             <FavoriteIcon class="favorite-icon" :active="isFavorite(game.id)"
                                 @click.stop.prevent="toggleFavorite(game.id)">
                             </FavoriteIcon>
